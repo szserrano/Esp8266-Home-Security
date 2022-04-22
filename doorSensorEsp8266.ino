@@ -172,7 +172,7 @@ void loop() {
       }
     }
   }  
-  else {
-    changeState1 = true; // Testing if it works
-  }
+  //else {
+  //  changeState1 = true; // Testing if it works
+  //}
 }
