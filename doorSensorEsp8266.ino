@@ -146,33 +146,29 @@ void loop() {
         doorState = doorState2;
       }
 
-      int length = 15 + strlen(door) + strlen(doorState);
+      int length = 25 + strlen(door) + strlen(doorState); // 33 is number of extra characters in body of json payload not including doorState and door lengths
       if(doorState == "closed"){
         Serial.print(String("POST ") + url + " HTTP/1.1\r\n" +
                           "Host: " + host + "\r\n" + 
-                          "Content-Type: application/x-www-form-urlencoded\r\n" + 
+                          "Content-Type: application/json\r\n" + 
                           "Content-Length: " + String(length) + "\r\n\r\n" +
-                          "value1=" + doorState + "\r\n" + 
-                          "value2=" + door + "\r\n");
+                          "{\"value1\":\"" + doorState + "\",\"value2\":\"" + door + "\"}" + "\r\n");
         client.print(String("POST ") + url + " HTTP/1.1\r\n" +
                           "Host: " + host + "\r\n" + 
-                          "Content-Type: application/x-www-form-urlencoded\r\n" + 
+                          "Content-Type: application/json\r\n" + 
                           "Content-Length: " + String(length) + "\r\n\r\n" +
-                          "value1=" + doorState + "&" +
-                          "value2=" + door + "\r\n");
+                          "{\"value1\":\"" + doorState + "\",\"value2\":\"" + door + "\"}" + "\r\n");
       } else {
         Serial.print(String("POST ") + url + " HTTP/1.1\r\n" +
                           "Host: " + host + "\r\n" + 
-                          "Content-Type: application/x-www-form-urlencoded\r\n" + 
+                          "Content-Type: application/json\r\n" + 
                           "Content-Length: " + String(length) + "\r\n\r\n" +
-                          "value1=" + doorState + "\r\n" + 
-                          "value2=" + door + "\r\n");
+                          "{\"value1\":\"" + doorState + "\",\"value2\":\"" + door + "\"}" + "\r\n");
         client.print(String("POST ") + url + " HTTP/1.1\r\n" +
                           "Host: " + host + "\r\n" + 
-                          "Content-Type: application/x-www-form-urlencoded\r\n" + 
+                          "Content-Type: application/json\r\n" + 
                           "Content-Length: " + String(length) + "\r\n\r\n" +
-                          "value1=" + doorState + "&" +
-                          "value2=" + door + "\r\n");
+                          "{\"value1\":\"" + doorState + "\",\"value2\":\"" + door + "\"}" + "\r\n");
       }
     }
   }  
